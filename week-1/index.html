@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="1stWeek" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="mystyle.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script src="topnav.js"></script>
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+	<p href="#default">My Website</p>
+	<div class="topnav-right">
+    	<a>Item 1</a>
+    	<a>Item 2</a>
+    	<a>Item 3</a>
+    	<a>Item 4</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars" style="font-size: 40px;"></i>
+    </a>
+  </div>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+
+<div class="container">
+	<div class="center">
+	  <p>Welcome to MyHome</p>
+	 </div>
+</div>
+
+<div class="gallery">
+  <div class="column">
+    <img src="img1.jpeg" alt="Nature" style="width:100%" >
+        <font size="1">Title 1</font>
+   </div>
+  <div class="column">
+    <img src="img1.jpeg" alt="Nature" style="width:100%">
+       <font size="1">Title 2</font>
+  </div>
+  <div class="column">
+    <img src="img1.jpeg" alt="Nature" style="width:100%">
+    <font size="1">Title 3</font>
+  </div>
+  <div class="column">
+    <img src="img1.jpeg" alt="Nature" style="width:100%">
+    <font size="1">Title 4</font>
+  </div>
+</div>
+ 
+ <div class="gallery" style="margin-top: 200px;">
+  <div class="column">
+    <img src="img1.jpeg" alt="Nature" style="width:100%" >
+        <font size="1">Title 5</font>
+  </div>
+  <div class="column">
+    <img src="img1.jpeg" alt="Nature" style="width:100%">
+    <font size="1">Title 6</font>
+  </div>
+  <div class="column">
+    <img src="img1.jpeg" alt="Nature" style="width:100%">
+       <font size="1">Title 7</font>
+      </div>
+  <div class="column">
+    <img src="img1.jpeg" alt="Nature" style="width:100%">
+        <font size="1">Title 8</font>
+     </div>
+</div>
+  
+
+  
+   </body>
+</html>
+
+

@@ -1,0 +1,143 @@
+<head>
+<meta name="1stWeek" content="width=device-width, initial-scale=1.0">
+<style>
+
+
+    
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  height: 300px;
+  background-color: #edf7fc;
+  font-size: 40px;
+  font-weight: bold;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  overflow: hidden;
+  background-color: #ffffff;
+  font-size:20px;
+  font-weight: bold;
+  padding: 20px 10px;
+}
+
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  float: right;
+  font-size:15px;
+}
+
+@media only screen and (min-width: 1200px) {
+
+.gallery {
+ padding-top: 5px;
+  width: 1200px;
+  margin:0 auto;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 23%;
+  padding: 1%;
+}
+
+
+/* Style the images inside the grid */
+.column img {
+  cursor: pointer; 
+  height: 160px;
+  display: block;
+   }
+
+}
+.column img:hover {
+  opacity: 1;
+}
+
+#RPSprevContent {
+  background: #edf7fc;
+  padding: 2px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 601px) {
+  .gallery {
+ padding-top: 5px;
+  width: 90%;
+  margin:0 auto;
+  position: center;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  float: left;
+  width: 45%;
+  padding: 2.5%;
+}
+
+/* Style the images inside the grid */
+.column img {
+  cursor: pointer; 
+  height: 160px;
+  display: block;
+   }
+}
+
+@media only screen and (max-device-width: 600px){
+  .gallery {      
+ padding-top: 5px;
+  width: 90%;
+}
+
+.column {
+ width: 100%;
+   }
+
+/* Style the images inside the grid */
+.column img {
+  cursor: pointer; 
+  display: block;
+  height: 280px;
+   margin-left: auto;
+  margin-right: auto;
+
+   }
+}
+
+</style>
+</head>

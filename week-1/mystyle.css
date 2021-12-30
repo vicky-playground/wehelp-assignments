@@ -1,7 +1,10 @@
 <head>
-<meta name="1stWeek" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
     
 * {
@@ -11,42 +14,44 @@
 .container {
   height: 300px;
   background-color: #edf7fc;
-  font-size: 40px;
+ font-size: 20%
   font-weight: bold;
-  position: relative;
-    position: center;
-}
+  position: relative ;
+    display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center; 
+  }
 
 .center {
   margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+  position:  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow:hidden;
+ }
 
 .topnav {
   overflow: hidden;
   background-color: #ffffff;
-  font-size:15px;
-  font-weight: bold;
-  padding: 10px;
-  color: black;
-  text-decoration: none;
+  text-align: center
   }
 
-.topnav p {
+ .topnav .msg {
+       display: inline;
+
+  }
+.topnav a {
   float: left;  
   border-radius: 4px;
-   vertical-align: middle;
-}
+  text-align: center;
+  padding: 14px 16px;
+  font-size:15px;
+font-weight: bold;
+ color: black;
+  text-decoration: none;
 
-.topnav a {
-  border-radius: 4px;
-   vertical-align: middle;
-}
-
+ }
+ 
 .topnav a:hover {
   background-color: #ddd;
   color: black;
@@ -58,8 +63,6 @@
 
  .topnav-right {
   float: right;
-  font-size:15px;
-   border-radius: 4px;
 }
 
 
@@ -89,7 +92,9 @@ justify-content:center;
     display: block;
     height:100%;
     width:auto /* This keeps the aspect ratio correct */
-}
+    margin: 0 auto; 
+    vertical-align: middle;
+    }
 }
 
 .column img:hover {
@@ -109,15 +114,15 @@ justify-content:center;
   width: 90%;
   margin:0 auto;
   position: center;
+  justify-content:center;
 }
 
-/* Create four equal columns that sits next to each other */
+/* Create 2 equal columns that sits next to each other */
 .column {
   float: left;
   width: 45%;
   padding: 2.5%;
   min-height: 200px;
-  display:inline-block;
 }
 
 /* Style the images inside the grid */
@@ -125,12 +130,26 @@ justify-content:center;
   cursor: pointer; 
   height:100%;
     width:auto /* This keeps the aspect ratio correct */
-  display: block;
-   }
+    display:block;
+    vertical-align: middle;
+    }
 }
 
+.column img:hover {
+  opacity: 1;
+}
+
+.column font{
+    text-align: center;
+   background: #edf7fc;
+  display: block;
+}
+
+
 @media only screen and (max-device-width: 600px){
-  .topnav a {display: none;}
+
+  .topnav .msg {display: none;}
+  
   .topnav a.icon {
     float: right;
     display: block;
@@ -149,22 +168,38 @@ justify-content:center;
   }
   
 .gallery {      
- padding-top: 5px;
- margin:0 auto;
+padding-top: 5px;
   width: 90%;
-   position: center;
+  margin:0 auto;
+  position: center;
+  justify-content:center;
 }
+
 .column {
- width: 95%;
- min-height: 200px;
- position: center;
+   float: left;
+  width: 90%;
+  padding: 2.5%;
+  min-height: 200px;
+
    }
 
 /* Style the images inside the grid */
 .column img {
   cursor: pointer; 
   display: block;
-   }
+  vertical-align: middle;
+  }
+   
+.column img:hover {
+  opacity: 1;
+}
+
+.column font{
+    text-align: center;
+   background: #edf7fc;
+  display: block;
+  
+}
 }
 
 </style>

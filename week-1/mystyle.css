@@ -69,31 +69,31 @@ font-weight: bold;
 @media only screen and (min-width: 1200px) {
 
 .gallery {
-justify-content:center;
  padding: 30px;
   width: 1200px;
-  margin:0 auto;
-   position: center;
+ margin: 0 auto;
+ text-align:center;
+  display: flex;
 }
 
 /* The grid: Four equal columns that floats next to each other */
 .column {
   float: left;
-  width: 23%;
+  width: 24%;
  min-height: 200px;
   padding: 1%;
-  display:inline-block;
+ flex-direction: column;
   }
 
 
 /* Style the images inside the grid */
 .column img {
   cursor: pointer; 
-    display: block;
     height:100%;
     width:auto /* This keeps the aspect ratio correct */
     margin: 0 auto; 
     vertical-align: middle;
+    
     }
 }
 
@@ -105,6 +105,7 @@ justify-content:center;
     text-align: center;
    background: #edf7fc;
   display: block;
+  font-size:15px;
   
 }
 
@@ -113,17 +114,18 @@ justify-content:center;
  padding-top: 5px;
   width: 90%;
   margin:0 auto;
-  position: center;
+   position: center;
   justify-content:center;
+  
 }
 
 /* Create 2 equal columns that sits next to each other */
 .column {
-  float: left;
-  width: 45%;
-  padding: 2.5%;
+  width: 98%;
+  padding: 2%;
   min-height: 200px;
-}
+  flex-direction: column;
+  }
 
 /* Style the images inside the grid */
 .column img {
@@ -143,6 +145,7 @@ justify-content:center;
     text-align: center;
    background: #edf7fc;
   display: block;
+   font-size:15px;
 }
 
 
@@ -173,14 +176,13 @@ padding-top: 5px;
   margin:0 auto;
   position: center;
   justify-content:center;
-}
+ }
 
 .column {
-   float: left;
-  width: 90%;
+  width: 100%;
   padding: 2.5%;
   min-height: 200px;
-
+flex-direction: column;
    }
 
 /* Style the images inside the grid */
@@ -197,8 +199,8 @@ padding-top: 5px;
 .column font{
     text-align: center;
    background: #edf7fc;
-  display: block;
   
+   font-size:15px;
 }
 }
 

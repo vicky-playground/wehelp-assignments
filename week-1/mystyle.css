@@ -69,10 +69,11 @@ font-weight: bold;
 @media only screen and (min-width: 1200px) {
 
 .gallery {
- padding: 30px;
+ padding: 5px;
   width: 1200px;
  margin: 0 auto;
- text-align:center;
+  position: center;
+  justify-content:center;
   display: flex;
 }
 

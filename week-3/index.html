@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="mystyle.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script src="topnav.js"></script>
+</head>
+<body>   <!---onload="viewData()"--->
+
+<div class="topnav" id="myTopnav">
+	<a href="#default">My Website</a>
+	<div class="topnav-right">
+    	<a class="msg">Item 1</a>
+    	<a class="msg">Item 2</a>
+    	<a class="msg">Item 3</a>
+    	<a class="msg">Item 4</a>
+           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars" style="font-size: 20px;"></i>
+    </a>
+    
+  </div>
+</div>
+
+<script>
+function myFunction() {
+  let x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+
+<div class="container">
+	  <p class="center">Welcome to MyHome</p>
+</div>
+
+<div class="gallery">
+  <div class="column" id="col-1">
+    <img id="img-1" src="img1.jpeg" alt="Nature" style="width:100%" >
+        <font id="text-1" size="1">Title 1</font>
+   </div>
+  <div class="column" id="col-2">
+    <img id="img-2" src="img1.jpeg" alt="Nature" style="width:100%">
+       <font id="text-2" size="1">Title 2</font>
+  </div>
+  <div class="column" id="col-3">
+    <img id="img-3" src="img1.jpeg" alt="Nature" style="width:100%">
+    <font id="text-3" size="1">Title 3</font>
+  </div>
+  <div class="column" id="col-4">
+    <img id="img-4" src="img1.jpeg" alt="Nature" style="width:100%">
+    <font id="text-4" size="1">Title 4</font>
+  </div>
+</div>
+ 
+ <div class="gallery">
+  <div class="column" id="col-5">
+    <img id="img-5" src="img1.jpeg" alt="Nature" style="width:100%" >
+        <font id="text-5" size="1">Title 5</font>
+  </div>
+  <div class="column" id="col-6">
+    <img id="img-6" src="img1.jpeg" alt="Nature" style="width:100%">
+    <font id="text-6" size="1">Title 6</font>
+  </div>
+  <div class="column" id="col-7">
+    <img id="img-7" src="img1.jpeg" alt="Nature" style="width:100%">
+       <font id="text-7" size="1">Title 7</font>
+      </div>
+  <div class="column" id="col-8">
+    <img id="img-8" src="img1.jpeg" alt="Nature" style="width:100%">
+        <font id="text-8" size="1">Title 8</font>
+     </div>
+</div>
+ 
+
+<script>
+// Get HTML head element
+var head = document.getElementsByTagName('HEAD')[0]; 
+  // Create new link Element
+  var link = document.createElement('link');
+  // Append link element to HTML head
+  head.appendChild(link); 
+  
+  // set the attributes for link element 
+  link.rel = 'stylesheet'; 
+      
+      link.type = 'text/css';
+  // set the attributes for link element 
+  link.href = 'mystyle.css'; 
+
+  
+  url = 'https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json';
+  const request = new XMLHttpRequest(); 
+ 
+  request.open('GET', url); 
+  request.send();  
+  
+  request.onload = () => { 
+    if (request.status === 200) { 
+      console.log("Success"); 
+      const res = JSON.parse(request.response)
+      const data = res.result.results
+      
+      let stitle;
+      let CAT2;
+      let img_url;
+      
+      // get the first eight attrations
+      for (var i = 0; i < 8; i++) {
+      
+      	// get value
+      	stitle = data[i].stitle;
+        CAT2 = data[i].CAT2;
+        img_url = 'https://' + data[i].file.split("https://", 2)[1];
+        
+        // build element of DOM
+        let img = document.createElement("img");
+        img.src=img_url;
+        let text = document.createTextNode(`${stitle} ${CAT2}`);
+        
+        // DOM API
+        let dom = document.getElementById(`col-${i+1}`);
+        let pic = document.getElementById(`img-${i+1}`);
+        let title = document.getElementById(`text-${i+1}`);
+
+        // append elements
+        pic.src = img_url;
+        title.innerHTML = dom.appendChild(text);
+      }
+    }  
+  }; 
+  
+  request.onerror = () => { 
+    console.log("error") 
+  }; 
+  
+</script>
+   </body>
+</html>
+
+

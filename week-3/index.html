@@ -40,38 +40,38 @@ function myFunction() {
 <div class="gallery">
   <div class="column" id="col-1">
     <img id="img-1" src="img1.jpeg" alt="Nature" style="width:100%" >
-        <font id="text-1" size="1">Title 1</font>
+        <font id="text-1" size="1"></font>
    </div>
   <div class="column" id="col-2">
     <img id="img-2" src="img1.jpeg" alt="Nature" style="width:100%">
-       <font id="text-2" size="1">Title 2</font>
+       <font id="text-2" size="1"></font>
   </div>
   <div class="column" id="col-3">
     <img id="img-3" src="img1.jpeg" alt="Nature" style="width:100%">
-    <font id="text-3" size="1">Title 3</font>
+    <font id="text-3" size="1"></font>
   </div>
   <div class="column" id="col-4">
     <img id="img-4" src="img1.jpeg" alt="Nature" style="width:100%">
-    <font id="text-4" size="1">Title 4</font>
+    <font id="text-4" size="1"></font>
   </div>
 </div>
  
  <div class="gallery">
   <div class="column" id="col-5">
     <img id="img-5" src="img1.jpeg" alt="Nature" style="width:100%" >
-        <font id="text-5" size="1">Title 5</font>
+        <font id="text-5" size="1"></font>
   </div>
   <div class="column" id="col-6">
     <img id="img-6" src="img1.jpeg" alt="Nature" style="width:100%">
-    <font id="text-6" size="1">Title 6</font>
+    <font id="text-6" size="1"></font>
   </div>
   <div class="column" id="col-7">
     <img id="img-7" src="img1.jpeg" alt="Nature" style="width:100%">
-       <font id="text-7" size="1">Title 7</font>
+       <font id="text-7" size="1"></font>
       </div>
   <div class="column" id="col-8">
     <img id="img-8" src="img1.jpeg" alt="Nature" style="width:100%">
-        <font id="text-8" size="1">Title 8</font>
+        <font id="text-8" size="1"></font>
      </div>
 </div>
  
@@ -120,6 +120,7 @@ var head = document.getElementsByTagName('HEAD')[0];
         let img = document.createElement("img");
         img.src=img_url;
         let text = document.createTextNode(`${stitle} ${CAT2}`);
+        let test = document.createElement("font");
         
         // DOM API
         let dom = document.getElementById(`col-${i+1}`);
@@ -128,7 +129,7 @@ var head = document.getElementsByTagName('HEAD')[0];
 
         // append elements
         pic.src = img_url;
-        title.innerHTML = dom.appendChild(text);
+        title.appendChild(text);
       }
     }  
   }; 

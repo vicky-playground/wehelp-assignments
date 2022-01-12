@@ -1,2 +1,1 @@
-# Week 1
-https://vicky-playground.github.io/wehelp-assignments/week-1/index.html
+https://vicky-playground.github.io/wehelp-assignments/week-3/index.html

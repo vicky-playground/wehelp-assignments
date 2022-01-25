@@ -1,4 +1,5 @@
 🚨 Based on the assignment, username is not added "**UNIQUE**" constraint.
+
 ![image](https://user-images.githubusercontent.com/90204593/151029236-d9610090-f20b-426c-b735-04003e3e6120.png)
 ![image](https://user-images.githubusercontent.com/90204593/151029309-b4341bf5-eaea-44ed-8856-8618bceba395.png)
 ![image](https://user-images.githubusercontent.com/90204593/151029583-94e5ecd4-fc98-421d-b052-52ddb6f9e936.png)

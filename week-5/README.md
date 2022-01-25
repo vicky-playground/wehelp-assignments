@@ -1,6 +1,5 @@
-Week 3:
-- Get Taipei attractions from the public data (https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json)
-- https://vicky-playground.github.io/wehelp-assignments/week-3/index.html
-
-Week 4:
-![Jan-21-2022 01-07-42](https://user-images.githubusercontent.com/90204593/150387674-57c9945d-7ecb-4048-b62d-4fef797520e3.gif)
+![image](https://user-images.githubusercontent.com/90204593/151029236-d9610090-f20b-426c-b735-04003e3e6120.png)
+![image](https://user-images.githubusercontent.com/90204593/151029309-b4341bf5-eaea-44ed-8856-8618bceba395.png)
+![image](https://user-images.githubusercontent.com/90204593/151029583-94e5ecd4-fc98-421d-b052-52ddb6f9e936.png)
+![image](https://user-images.githubusercontent.com/90204593/151029675-cf97a789-5ccf-433f-a563-db7ee1dacc49.png)
+![image](https://user-images.githubusercontent.com/90204593/151029747-268d4e26-0909-46ff-8e68-15bb6a015374.png)

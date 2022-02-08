@@ -17,7 +17,7 @@ app.secret_key = '12345678'
 
 """
 # connect to the local DB
-conn = pymysql.connect(host = "localhost", user = "root", password="12345678", database='website')
+conn = pymysql.connect(host = "localhost", user = "root", password="12345678", database='pythonlogin')
 cursor = conn.cursor(pymysql.cursors.DictCursor)
 """
 
@@ -68,16 +68,16 @@ def login():
 
         """
         # Check if user exists using MySQL 
-        sql = "SELECT * FROM member WHERE username = %s AND password = %s"
+        sql = "SELECT * FROM users WHERE username = %s AND password = %s"
         cursor.execute(sql, (username, password))
         # Fetch one record and return result
         user = cursor.fetchone()
         
-        # If user doesn't exist in member table 
+        # If user doesn't exist in users table 
         if user is None:
             #Redirect to error page
             return redirect(url_for('error',message= "登入失敗唷！"))
-        # user exists in member table 
+        # user exists in users table 
         elif len(user) > 0:
             # set the session variable
             session['username'] = username

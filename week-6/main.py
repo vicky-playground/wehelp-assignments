@@ -1,0 +1,120 @@
+from collections import UserString
+from email import message
+from flask import Flask, flash, render_template, redirect, url_for, request, session
+from flaskext.mysql import MySQL
+import pymysql
+pymysql.install_as_MySQLdb()
+import pymysql.cursors
+import re
+import mysql.connector
+import datetime
+import os
+
+app = Flask(__name__,template_folder="templates")
+
+# for extra protection
+app.secret_key = os.urandom(24)
+
+# connect to the local DB
+conn = pymysql.connect(host = "localhost", user = "root", password="12345678", database='website')
+cursor = conn.cursor(pymysql.cursors.DictCursor)
+
+# http://127.0.0.1:3000/signin
+@app.route('/signin')
+def signin():
+    if session.get("username") is None:
+        return redirect(url_for("login"))
+    else:
+        return redirect(url_for("member"))
+
+# http://127.0.0.1:3000/member/
+@app.route('/member/')
+def member():
+    # check if the users exist or not
+    if 'username' not in session:
+        # if not there in the session then redirect to the login page
+        return redirect(url_for("login"))
+    return render_template("home.html")
+
+# http://127.0.0.1:3000/error/
+@app.route('/error/')
+def error():
+    return render_template("error.html")
+
+# http://127.0.0.1:3000/signout
+@app.route('/signout')
+def signout():
+    if request.method == "GET":
+     # remove the username from the session if it is there
+        session.pop('username', None)
+        return redirect(url_for('login'))
+
+# http://127.0.0.1:3000/  
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    # signup process
+    if request.method == 'POST' and 'name' in request.form and 'username' in request.form and 'password' in request.form:   
+        return redirect(url_for("signup"))
+
+    # Check if "username" and "password" POST requests exist (user submitted form)
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:     
+        # Create variables for easy access
+        username = request.form['username']
+        password = request.form['password']
+
+        # record the username
+        session['username'] = username
+        
+        # Check if user exists using MySQL 
+        sql = "SELECT * FROM member WHERE username = %s AND password = %s"
+        cursor.execute(sql, (username, password))
+        # Fetch one record and return result
+        user = cursor.fetchone()
+        
+        # If user doesn't exist in member table 
+        if user is None:
+            session.pop('_flashes', None)
+            flash('帳號或密碼輸入錯誤')
+            #Redirect to error page
+            return redirect(url_for('error',message= "帳號或密碼輸入錯誤"))
+        # user exists in member table 
+        elif len(user) > 0:
+            # set the session variable
+            session['username'] = username
+            #Redirect to signin page
+            return redirect(url_for('signin'))
+        return redirect(url_for("login"))
+    return render_template('index.html') 
+
+# http://127.0.0.1:3000/signup 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    # Check if "username" and "password" POST requests exist (user submitted form)
+    # Create variables for easy access
+    name = request.form['name']
+    username = request.form['username']
+    password = request.form['password']
+        
+    # Check if username exists using MySQL 
+    sql = "SELECT * FROM member WHERE username = %s"
+    cursor.execute(sql, (username))
+    # Fetch one record and return result
+    user = cursor.fetchone()
+        
+    # If user doesn't exist in member table 
+    if user is None:
+        sql = "INSERT INTO member(name,username, password) VALUES (%s,%s,%s)"
+        cursor.execute(sql, (name, username, password))
+        flash('會員註冊成功')
+    # user exists in member table 
+    elif len(user) > 0:
+        session.pop('_flashes', None)
+        flash('帳號已經被註冊')
+        #Redirect to error page
+        return redirect(url_for('error',message= "帳號已經被註冊"))
+    return render_template('index.html') 
+
+
+# http://127.0.0.1:3000/
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=3000, use_reloader=True, debug=True)

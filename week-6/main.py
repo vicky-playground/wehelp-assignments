@@ -22,7 +22,7 @@ cursor = conn.cursor(pymysql.cursors.DictCursor)
 # http://127.0.0.1:3000/signin
 @app.route('/signin')
 def signin():
-    if session.get("username") is None:
+    if session.get("name") is None:
         return redirect(url_for("login"))
     else:
         return redirect(url_for("member"))
@@ -31,7 +31,7 @@ def signin():
 @app.route('/member/')
 def member():
     # check if the users exist or not
-    if 'username' not in session:
+    if 'name' not in session:
         # if not there in the session then redirect to the login page
         return redirect(url_for("login"))
     return render_template("home.html")
@@ -46,7 +46,7 @@ def error():
 def signout():
     if request.method == "GET":
      # remove the username from the session if it is there
-        session.pop('username', None)
+        session.pop('name', None)
         return redirect(url_for('login'))
 
 # http://127.0.0.1:3000/  
@@ -61,9 +61,6 @@ def login():
         # Create variables for easy access
         username = request.form['username']
         password = request.form['password']
-
-        # record the username
-        session['username'] = username
         
         # Check if user exists using MySQL 
         sql = "SELECT * FROM member WHERE username = %s AND password = %s"
@@ -73,14 +70,16 @@ def login():
         
         # If user doesn't exist in member table 
         if user is None:
-            session.pop('_flashes', None)
+            # session.pop('_flashes', None)
             flash('帳號或密碼輸入錯誤')
             #Redirect to error page
             return redirect(url_for('error',message= "帳號或密碼輸入錯誤"))
         # user exists in member table 
         elif len(user) > 0:
             # set the session variable
-            session['username'] = username
+            cursor.execute("SELECT name FROM member WHERE username = %s and password = %s", (username, password))
+            user = cursor.fetchone()
+            session['name'] = user['name']
             #Redirect to signin page
             return redirect(url_for('signin'))
         return redirect(url_for("login"))

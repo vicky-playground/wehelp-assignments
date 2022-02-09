@@ -34,7 +34,7 @@ def signin():
         
     # If user doesn't exist in member table 
     if user is None:
-        # session.pop('_flashes', None)
+        session.pop('_flashes', None)
         flash('帳號或密碼輸入錯誤')
         #Redirect to error page
         return redirect(url_for('error',message= "帳號或密碼輸入錯誤"))
@@ -61,6 +61,7 @@ def member():
 # http://127.0.0.1:3000/error/
 @app.route('/error/', methods=['GET', 'POST'])
 def error():
+    session.pop('_flashes', None)
     return render_template("error.html")
 
 # http://127.0.0.1:3000/signout
@@ -105,7 +106,7 @@ def signup():
         flash('會員註冊成功')
     # user exists in member table 
     elif len(user) > 0:
-        # session.pop('_flashes', None)
+        session.pop('_flashes', None)
         flash('帳號已經被註冊')
         #Redirect to error page
         return redirect(url_for('error',message= "帳號已經被註冊"))

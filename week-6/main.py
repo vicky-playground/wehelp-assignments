@@ -20,12 +20,34 @@ conn = pymysql.connect(host = "localhost", user = "root", password="12345678", d
 cursor = conn.cursor(pymysql.cursors.DictCursor)
 
 # http://127.0.0.1:3000/signin
-@app.route('/signin')
-def signin():
-    if session.get("name") is None:
-        return redirect(url_for("login"))
-    else:
-        return redirect(url_for("member"))
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():   
+    # Create variables for easy access
+    username = request.form['username']
+    password = request.form['password']
+        
+    # Check if user exists using MySQL 
+    sql = "SELECT * FROM member WHERE username = %s AND password = %s"
+    cursor.execute(sql, (username, password))
+    # Fetch one record and return result
+    user = cursor.fetchone()
+        
+    # If user doesn't exist in member table 
+    if user is None:
+        # session.pop('_flashes', None)
+        flash('帳號或密碼輸入錯誤')
+        #Redirect to error page
+        return redirect(url_for('error',message= "帳號或密碼輸入錯誤"))
+    # user exists in member table 
+    elif len(user) > 0:
+        # set the session variable
+        cursor.execute("SELECT name FROM member WHERE username = %s and password = %s", (username, password))
+        user = cursor.fetchone()
+        session['name'] = user['name']
+        #Redirect to member page
+        return redirect(url_for('member'))
+        
+        
 
 # http://127.0.0.1:3000/member/
 @app.route('/member/')
@@ -37,7 +59,7 @@ def member():
     return render_template("home.html")
 
 # http://127.0.0.1:3000/error/
-@app.route('/error/')
+@app.route('/error/', methods=['GET', 'POST'])
 def error():
     return render_template("error.html")
 
@@ -56,39 +78,15 @@ def login():
     if request.method == 'POST' and 'name' in request.form and 'username' in request.form and 'password' in request.form:   
         return redirect(url_for("signup"))
 
-    # Check if "username" and "password" POST requests exist (user submitted form)
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:     
-        # Create variables for easy access
-        username = request.form['username']
-        password = request.form['password']
-        
-        # Check if user exists using MySQL 
-        sql = "SELECT * FROM member WHERE username = %s AND password = %s"
-        cursor.execute(sql, (username, password))
-        # Fetch one record and return result
-        user = cursor.fetchone()
-        
-        # If user doesn't exist in member table 
-        if user is None:
-            # session.pop('_flashes', None)
-            flash('帳號或密碼輸入錯誤')
-            #Redirect to error page
-            return redirect(url_for('error',message= "帳號或密碼輸入錯誤"))
-        # user exists in member table 
-        elif len(user) > 0:
-            # set the session variable
-            cursor.execute("SELECT name FROM member WHERE username = %s and password = %s", (username, password))
-            user = cursor.fetchone()
-            session['name'] = user['name']
-            #Redirect to signin page
-            return redirect(url_for('signin'))
-        return redirect(url_for("login"))
+    # signin process
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:   
+        return redirect(url_for("signin")) 
+         
     return render_template('index.html') 
 
 # http://127.0.0.1:3000/signup 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    # Check if "username" and "password" POST requests exist (user submitted form)
     # Create variables for easy access
     name = request.form['name']
     username = request.form['username']
@@ -107,7 +105,7 @@ def signup():
         flash('會員註冊成功')
     # user exists in member table 
     elif len(user) > 0:
-        session.pop('_flashes', None)
+        # session.pop('_flashes', None)
         flash('帳號已經被註冊')
         #Redirect to error page
         return redirect(url_for('error',message= "帳號已經被註冊"))

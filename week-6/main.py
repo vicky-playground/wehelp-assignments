@@ -15,6 +15,8 @@ app = Flask(__name__,template_folder="templates")
 # for extra protection
 app.secret_key = os.urandom(24)
 
+app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(seconds=30)
+
 # connect to the local DB
 conn = pymysql.connect(host = "localhost", user = "root", password="12345678", database='website')
 cursor = conn.cursor(pymysql.cursors.DictCursor)

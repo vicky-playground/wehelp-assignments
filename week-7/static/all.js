@@ -1,6 +1,3 @@
-const resultTEST = document.getElementById('resultTEST')
-
-
 // gets data from API and sets the content of #result div
 async function getData() {
   const fetchDataBtn = document.getElementById('fetchdata')
@@ -26,6 +23,7 @@ async function getData() {
                       .catch(fail => {
                         result.innerText = "錯誤";
                       });
-  
 }
+
+
 

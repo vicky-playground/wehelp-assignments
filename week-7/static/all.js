@@ -24,7 +24,7 @@ async function getData() {
                         }
                       })
                       .catch(fail => {
-                        result.innerText = "無此帳號";
+                        result.innerText = "錯誤";
                       });
   
 }

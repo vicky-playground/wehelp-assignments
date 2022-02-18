@@ -81,8 +81,6 @@ def memberAPI():
         result["data"] = "null"
     else:
         result["data"] = users[0]
-        if request.method == 'POST':
-            return json.dumps(result["data"].get('name'), indent=4)
         #get name:
         #result["data"].get('name')
         """

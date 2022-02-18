@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Flask Practice - Login System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="header">
+      <h1>歡迎光臨，請註冊登入系統</h1>
+    </div>
+    <div class="login">
+      <h3>註冊帳號</h3>
+      <form action="{{ url_for('signup') }}" method="post">
+          <p><label for="username">姓名</label>
+          <input type="text" placeholder="請輸入姓名" name="name" value="" required></p>
+          <p><label for="username">帳號</label>
+          <input type="text" placeholder="請輸入帳號" name="username" value="" required></p>
+          <p><label for="username">密碼</label>
+          <input type="password" placeholder="請輸入密碼" name="password" value="" required></p>
+          <input id="login" type="submit" value="註冊"></input>       
+      </form>
+  </div>
+  <hr>
+    <div class="login">
+        <h3>登入系統</h3>
+        <form action="{{ url_for('signin') }}" method="post">
+            <p><label for="username">帳號</label>
+            <input type="text" placeholder="請輸入帳號" name="username" value="" required></p>
+            <p><label for="username">密碼</label>
+            <input type="password" placeholder="請輸入密碼" name="password" value="" required></p>
+            <input id="login" type="submit" value="登入"></input>       
+        </form>
+    </div>
+  </body>
+</html>

@@ -96,7 +96,6 @@ def memberAPI():
         """
     return json.dumps(result, indent=4, sort_keys=True)
 
-
 # http://127.0.0.1:3000/error/
 @app.route('/error/', methods=['GET', 'POST'])
 def error():

@@ -5,7 +5,7 @@ const resultTEST = document.getElementById('resultTEST')
 async function getData() {
   const fetchDataBtn = document.getElementById('fetchdata')
   const result = document.getElementById('result')
-  // result.innerText = "Loading....";
+  result.innerText = "Loading....";
   let query = document.getElementById("username").value;
   let url = 'http://127.0.0.1:3000/api/members?username=' + query;
   console.log (url);

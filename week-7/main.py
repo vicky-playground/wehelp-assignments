@@ -67,10 +67,10 @@ def member():
         
     return render_template("home.html")
 
-# http://127.0.0.1:3000/api/members?username=""
+# http://127.0.0.1:3000/api/member?username=""
 # route to an MySQL ID in Flask based on query parameters in url
-@app.route('/api/members', methods=['GET', 'POST'])
-def memberAPI():
+@app.route('/api/member')
+def memberAPI():           
     # get the value of user (i.e. ?username=some-value)
     user = request.args.get('username')
     sql = "SELECT id, name, username FROM member WHERE username = %s"
@@ -93,6 +93,32 @@ def memberAPI():
             i += 1
         """
     return json.dumps(result, indent=4, sort_keys=True)
+
+# edit names
+# http://127.0.0.1:3000/api/members
+# route to an MySQL in Flask based on query parameters in url
+@app.route('/api/members', methods=['POST'])
+def editAPI():
+    # revise the user's name 
+    request_data = request.get_json()
+    newName = request_data['name']
+    sql = "UPDATE member SET name = %s WHERE name = %s"
+    cursor.execute(sql, (newName,session['name']))
+    data = {'success': True}
+    if newName == "" or newName == session['name']:
+        data = {'fail': True}
+        print(data)
+    return data
+
+"""
+        content_type = request.headers.get('Content-Type')
+        if (content_type == 'application/json'):
+            json = request.json
+            return json
+        else:
+            return 'Content-Type not supported!'
+"""
+
 
 # http://127.0.0.1:3000/error/
 @app.route('/error/', methods=['GET', 'POST'])

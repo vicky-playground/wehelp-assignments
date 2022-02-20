@@ -8,3 +8,6 @@ Week 3:
 Week 6:
 
 ![Feb-10-2022 00-44-10](https://user-images.githubusercontent.com/90204593/153248108-d392254c-8253-4b32-8e0b-b063760af6b4.gif)
+
+Week 7: add 2 APIs -- look up any user's name & edit the current user name
+![Feb-21-2022 02-14-08](https://user-images.githubusercontent.com/90204593/154857566-cd689d6e-2210-4a61-980e-7d1cc3159480.gif)

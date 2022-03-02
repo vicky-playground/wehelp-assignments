@@ -1,3 +1,5 @@
+WeHelp Phase 1 ~ 2022/2/27
+
 Week 3:
 - Fetch and organize the data from JSON file with Python
 - https://vicky-playground.github.io/wehelp-assignments/week-3/index.html

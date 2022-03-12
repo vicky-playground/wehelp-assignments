@@ -1,4 +1,4 @@
-# WeHelp Phase 2:https://github.com/vicky-playground/origin
+# WeHelp Phase 2: [origin](https://github.com/vicky-playground/origin)
 # This is WeHelp Phase 1 (by 2022/2/27)
 
 Week 3:

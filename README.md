@@ -1,5 +1,5 @@
 # WeHelp Phase 2: [origin](https://github.com/vicky-playground/origin)
-# This is WeHelp Phase 1 (by 2022/2/27)
+# The below is WeHelp Phase 1 (by 2022/2/27)
 
 Week 3:
 - Fetch and organize the data from JSON file with Python
